@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+             
+    mysql:
+        image: mysql:8.0.23
+        container_name: DB
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: ${ROOT_PASSWORD}
+            MYSQL_DATABASE: ${DB}
+            MYSQL_USER: ${USER}
+            MYSQL_PASSWORD: ${PASSWORD}
+        volumes:
+            - ./mysql/db_data:/var/lib/mysql
+        ports:
+            - 3308:3306
+        networks:
+            web:
+
+    api:
+        container_name: app
+        build: ./api
+        image: app
+        ports:
+            - "8000:8000"
+        networks:
+            web:
+        env_file:
+            - ./.env
+        depends_on:
+            - mysql
+               
+    proxy:
+        container_name: proxy
+        build: ./proxy
+        image: proxy
+        ports:
+            - 80:80
+        depends_on:
+            - api
+        networks:
+            web:
+                
+networks: 
+    web:
