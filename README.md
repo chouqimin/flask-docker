@@ -67,3 +67,20 @@ delete(刪除)
 
 ![delete(刪除)](https://raw.githubusercontent.com/chouqimin/flask-docker/main/sample_img/task_delete_method.JPG)
 
+---
+
+### 單元測試
+
+註1 : 這邊就不再docker中測試了，需安裝python3.7以及requirements.txt 中的套件，除了uwsgi
+
+註2 : 這邊僅測試 task 相關的 api
+
+```sh
+cd api
+
+python -m unittest discover
+```
+
+之後有修改code，可執行這個看是否會影到相關程式碼
+
+看執行結果是OK還是FAILED，若是FAILED的話，則表示你的修改有影響到相關的程式碼，必須加以調整到OK為止，這個前提是在單元測試沒寫錯的情況下

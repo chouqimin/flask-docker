@@ -1,21 +1,15 @@
-from sqlalchemy import Column, String, TIMESTAMP, text
-from sqlalchemy.dialects.mysql import INTEGER, TINYINT
+from sqlalchemy import Column, text
+from sqlalchemy.types import Integer, String, Boolean, TIMESTAMP
 
 from app import db
 
 class Task(db.Model):
     __tablename__ = 'task'
-    __table_args__ = {
-        'mysql_engine': 'InnoDB', 
-        'schema':'app'
-        }
 
-    
-    id = Column(INTEGER, primary_key=True)
-    name = Column(String(45, 'utf8mb4_general_ci'), nullable=False)
-    status = Column(TINYINT, server_default=text("'0'"))
+    id = Column(Integer, primary_key=True)    
+    name = Column(String(45), nullable=False)
+    status = Column(Boolean, server_default=text("'0'"))
     create_time = Column(TIMESTAMP, server_default=text("CURRENT_TIMESTAMP"))
-    update_time = Column(TIMESTAMP, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
     @staticmethod
     def get_list():
