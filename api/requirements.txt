@@ -3,7 +3,7 @@ aniso8601==9.0.1
 cffi==1.14.5
 click==8.0.1
 colorama==0.4.4
-cryptography==41.0.0
+cryptography==41.0.2
 Flask==2.2.5
 Flask-Migrate==3.0.1
 Flask-RESTful==0.3.9
