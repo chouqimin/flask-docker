@@ -24,4 +24,4 @@ SQLAlchemy==1.4.17
 typing-extensions==3.10.0.0
 Werkzeug==2.2.3
 zipp==3.4.1
-uWSGI==2.0.18
+uWSGI==2.0.22
